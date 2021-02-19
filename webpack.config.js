@@ -1,10 +1,10 @@
-const path = require("path");
 const webpack = require("webpack");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const WebpackPwaManifest = require("webpack-pwa-manifest");
+const path = require("path");
 
-module.exports = {
+const config = {
   entry: {
     app: "./assets/js/script.js",
     events: "./assets/js/events.js",
@@ -18,7 +18,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jpg$/,
+        test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
             loader: "file-loader",
@@ -44,7 +44,7 @@ module.exports = {
       jQuery: "jquery",
     }),
     new BundleAnalyzerPlugin({
-      analyzerMode: "static", // the report outputs to an HTML file in the dist folder
+      analyzerMode: "static",
     }),
     new WebpackPwaManifest({
       name: "Food Event",
@@ -59,10 +59,12 @@ module.exports = {
         {
           src: path.resolve("assets/img/icons/icon-512x512.png"),
           sizes: [96, 128, 192, 256, 384, 512],
-          destination: path.join("assets", "img", "icons"),
+          destination: path.join("assets", "icons"),
         },
       ],
     }),
   ],
   mode: "development",
 };
+
+module.exports = config;
