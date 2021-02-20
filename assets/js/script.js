@@ -1,4 +1,4 @@
-require("bootstrap");
+require('bootstrap');
 const img1 = require("../../assets/img/food-table.jpg").default;
 const img2 = require("../../assets/img/grill.jpg").default;
 
